@@ -1,0 +1,469 @@
+<html lang="en" class=" js csstransforms3d"><head>
+  <meta charset="utf-8">
+  
+  <!-- disable zooming -->
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=0">
+  
+  <title>Box 2 - show sides · Intro to CSS 3D transforms › Examples</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/rotate.js"></script>
+    
+<style media="screen">
+    section, footer, nav {
+  display: block;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  -webkit-text-size-adjust: none;
+  color: #333;
+}
+
+a {
+  color: blue;
+  color: hsl( 220, 90%, 40% );
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: blue;
+  background-color: hsl( 220, 90%, 50% );
+  color: white;
+}
+
+#options {
+  position: relative;
+  z-index: 100;
+  margin-bottom: 40px;
+}
+
+button {
+  font-size: 16px;
+  -webkit-appearance: push-button;
+}
+
+footer {
+  border-top: 1px solid #CCC;
+  font-size: 0.8em;
+  position: relative;
+  z-index: 100;
+}
+
+#disclaimer {
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+.no-csstransforms3d #disclaimer { display: block; }
+
+hr {
+  border: none;
+  border-top: 1px solid #CCC;
+}
+
+figure {
+  margin: 0;
+}
+
+code {
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+/* index navigation */
+
+.index nav ul {
+  list-style: none;
+  margin: 0 0 3.0em 0;
+  padding: 0;
+}
+
+.index nav ul a {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+  padding: 10px;
+  border: 1px solid #CCC;
+  border-bottom: none;
+}
+
+.index nav ul li:first-child a {
+  border-radius: 10px 10px 0 0;
+}
+
+.index nav ul li:last-child a {
+  border-radius: 0 0 10px 10px;
+  border-bottom: 1px solid #CCC;
+}
+
+/**** Docs ****/
+
+body.doc {
+  max-width: 640px;
+}
+
+.doc #content {
+  font-size: 14px;  
+  line-height: 1.5em;
+}
+
+.doc #content blockquote {
+  margin-left: 0;
+  padding: 0.8em;
+  background: #EEE;
+  background: hsla( 0, 0%, 0%, 0.04 );
+}
+
+.doc #content img {
+  border: 1px solid #CCC;
+  display: inline-block;
+}
+
+.doc #content pre {
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+.doc nav h1 {
+  font-size: 20px;
+}
+
+.doc nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doc nav li a {
+  display: block;
+  padding: 0.3em 0;
+}
+
+.doc nav li.current a {
+  font-weight: bold;
+  color: #333;
+}
+.doc nav li.current a:hover { color: white; }
+
+@media screen and (min-width: 768px) {
+
+  body.doc {
+    margin-left: 220px;
+  }
+  
+  .doc nav {
+    width: 200px;
+    position: fixed;
+    left: 10px;
+    font-size: 14px;
+  }
+
+  .doc nav h1 {
+    margin-top: 0;
+  }
+
+}
+
+/* proxy range */
+
+.proxy-range {
+  display: inline-block;
+  position: relative;
+  height: 30px;
+  width: 200px;
+  border: 1px solid hsla( 0, 0%, 0%, 0.15 );
+  background-color: hsla( 0, 0%, 0%, 0.02 );
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0 1px 7px hsla( 0, 0%, 0%, 0.3 );
+     -moz-box-shadow: inset 0 1px 7px hsla( 0, 0%, 0%, 0.3 );
+       -o-box-shadow: inset 0 1px 7px hsla( 0, 0%, 0%, 0.3 );
+          box-shadow: inset 0 1px 7px hsla( 0, 0%, 0%, 0.3 );
+
+}
+
+.proxy-range.highlighted {
+  background-color: hsla( 220, 90%, 50%, 0.15 );
+}
+
+.proxy-range .handle {
+  width: 38px;
+  height: 38px;
+  -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+          border-radius: 20px;
+  border: 1px solid hsla(0, 0%, 0%, 0.3);
+  position: absolute;
+  top: -5px;
+  left: -20px;
+  background-color: hsla( 220, 70%, 60%, 1.0 );
+  background-image: -webkit-gradient(radial, center 15%, 0, center 30%, 30, 
+    from(            hsla( 0, 0%, 100%, 0.6 ) ),  
+    color-stop( 50%, hsla( 0, 0%, 100%, 0.0 ) ),
+    color-stop( 50%, hsla( 0, 0%,   0%, 0.0 ) ),
+    to(              hsla( 0, 0%,   0%, 0.5 ) )
+  );
+  background-image: -moz-radial-gradient(center 30%, cover,
+    hsla( 0, 0%, 100%, 0.5 ),  
+    hsla( 0, 0%, 100%, 0.0 ) 50%,
+    hsla( 0, 0%,   0%, 0.0 ) 50%,
+    hsla( 0, 0%,   0%, 0.5 )
+  );
+  -webkit-box-shadow: 
+    0  2px 0px -1px hsla( 0, 0%, 100%, 1.0 ) inset, 
+    0 -4px 2px -1px hsla( 0, 0%,   0%, 0.1 ) inset, 
+    0  1px 2px  0px hsla( 0, 0%,   0%, 0.3 )
+  ;
+  -moz-box-shadow: 
+    0  2px 0px -1px hsla( 0, 0%, 100%, 0.7 ) inset, 
+    0 -4px 2px -1px hsla( 0, 0%,   0%, 0.1 ) inset, 
+    0  1px 2px  0px hsla( 0, 0%,   0%, 0.3 )
+  ;
+  box-shadow: 
+    0  2px 0px -1px hsla( 0, 0%, 100%, 0.7 ) inset, 
+    0 -4px 2px -1px hsla( 0, 0%,   0%, 0.1 ) inset, 
+    0  1px 2px  0px hsla( 0, 0%,   0%, 0.3 )
+  ;
+  -webkit-transition-property: width, height, top, left, -webkit-border-radius;
+     -moz-transition-property: width, height, top, left, -moz-border-radius;
+  -webkit-transition-duration: 0.1s;
+     -moz-transition-duration: 0.1s;
+}
+
+.proxy-range.highlighted .handle {
+  height: 98px;
+  top: -35px;
+  width: 4px;
+  left: -3px;
+  background-image: -webkit-gradient(linear, 0 top, 0 bottom, 
+    from(            hsla( 0, 0%, 100%, 0.6 ) ),  
+    color-stop( 50%, hsla( 0, 0%, 100%, 0.0 ) ),
+    color-stop( 50%, hsla( 0, 0%,   0%, 0.0 ) ),
+    to(              hsla( 0, 0%,   0%, 0.5 ) )
+  );
+  border-radius: 3px;
+}
+
+
+
+
+/******* Pygments *******/
+
+
+
+pre {
+  background: #111;
+  color: white;
+  padding: 0.8em;
+  white-space: pre-wrap;
+}
+
+
+code .s1,
+code .s { color: #78BD55; } /* string */
+code .mi, /* integer */
+code .cp { color: #5298D4; } /* doctype */
+code .k { color: #E39B79; } /* keyword */
+code .kd, /* storage */
+code .na { color: #A9D866; } /* markup attribute */
+code .p  { color: #EDB; } /* punctuation */
+code .o  { color: #F63; }   /* operator */
+code .nb { color: #AA97AC;} /* support */
+
+/* comment */
+code .c,
+code .c1 { color: #666; font-style: italic; }
+
+code .nt { color: #A0C8FC; } /* Markup open tag */
+
+code .nf { color: #9EA8B8; } /* css id */
+code .nc { color: #A78352; }  /* CSS class */
+code .m  { color: #DE8E50; } /* CSS value */
+code .nd { color: #9FAD7E; } /* CSS pseudo selector */
+
+</style>
+    
+    <style media="screen">
+
+    .container {
+      width: 100%;
+      height: 100%;
+    overflow: hidden;
+      position: relative;
+      margin: 0 auto 40px;
+      border: 1px solid #CCC;
+
+    }
+
+    #box {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      -webkit-transform-style: preserve-3d;
+         -moz-transform-style: preserve-3d;
+           -o-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+      -webkit-transition: -webkit-transform 1s;
+         -moz-transition: -moz-transform 1s;
+           -o-transition: -o-transform 1s;
+              transition: transform 1s;
+    }
+
+    #box section {
+      display: block;
+      position: absolute;
+      font-size: 90px;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+    }
+
+    #box.panels-backface-invisible section {
+      -webkit-backface-visibility: hidden;
+         -moz-backface-visibility: hidden;
+           -o-backface-visibility: hidden;
+              backface-visibility: hidden;
+    }
+
+    #box .front,
+    #box .back {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #box .right,
+    #box .left {
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+    }
+
+    #box .top,
+    #box .bottom {
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+    }
+
+
+    #box .front  { background: hsla( 000, 100%, 50%, 0.7 ); }
+    #box .back   { background: hsla( 160, 100%, 50%, 0.7 ); }
+    #box .right  { background: hsla( 120, 100%, 50%, 0.7 ); }
+    #box .left   { background: hsla( 180, 100%, 50%, 0.7 ); }
+    #box .top    { background: hsla( 240, 100%, 50%, 0.7 ); }
+    #box .bottom { background: hsla( 300, 100%, 50%, 0.7 ); }
+
+    #box .front  {
+      -webkit-transform: translateZ( 1000px );
+         -moz-transform: translateZ( 1000px );
+           -o-transform: translateZ( 1000px );
+              transform: translateZ( 1000px );
+    }
+    #box .back   {
+      -webkit-transform: rotateX( -180deg ) translateZ(  1000px );
+         -moz-transform: rotateX( -180deg ) translateZ(  50px );
+           -o-transform: rotateX( -180deg ) translateZ(  50px );
+              transform: rotateX( -180deg ) translateZ(  50px );
+    }
+    #box .right {
+      -webkit-transform: rotateY(   90deg ) translateZ( 1000px );
+         -moz-transform: rotateY(   90deg ) translateZ( 1000px );
+           -o-transform: rotateY(   90deg ) translateZ( 1000px );
+              transform: rotateY(   90deg ) translateZ( 1000px );
+    }
+    #box .left {
+      -webkit-transform: rotateY(  -90deg ) translateZ( 1000px );
+         -moz-transform: rotateY(  -90deg ) translateZ( 1000px );
+           -o-transform: rotateY(  -90deg ) translateZ( 1000pxx );
+              transform: rotateY(  -90deg ) translateZ( 1000px );
+    }
+    #box .top {
+      -webkit-transform: rotateX(   90deg ) translateZ( 1000px );
+         -moz-transform: rotateX(   90deg ) translateZ( 500px );
+           -o-transform: rotateX(   90deg ) translateZ( 500px );
+              transform: rotateX(   90deg ) translateZ( 500px );
+    }
+    #box .bottom {
+      -webkit-transform: rotateX(  -90deg ) translateZ( 1000px );
+         -moz-transform: rotateX(  -90deg ) translateZ( 500px );
+           -o-transform: rotateX(  -90deg ) translateZ( 500px );
+              transform: rotateX(  -90deg ) translateZ( 500px );
+    }
+
+
+    #box.show-front {
+      -webkit-transform: translateZ(  -1000px );
+         -moz-transform: translateZ(  -50px );
+           -o-transform: translateZ(  -50px );
+              transform: translateZ(  -50px );
+    }
+    #box.show-back {
+      -webkit-transform: translateZ( -1000px ) rotateX( -180deg );
+         -moz-transform: translateZ( -1000px ) rotateX( -180deg );
+           -o-transform: translateZ( -1000px ) rotateX( -180deg );
+              transform: translateZ( -1000px ) rotateX( -180deg );
+    }
+    #box.show-right {
+      -webkit-transform: translateZ( -1000px ) rotateY(  -90deg );
+         -moz-transform: translateZ( -1000px ) rotateY(  -90deg );
+           -o-transform: translateZ( -1000px ) rotateY(  -90deg );
+              transform: translateZ( -1000px ) rotateY(  -90deg );
+    }
+    #box.show-left {
+      -webkit-transform: translateZ( -1000px ) rotateY(   90deg );
+         -moz-transform: translateZ( -1000px ) rotateY(   90deg );
+           -o-transform: translateZ( -1000px ) rotateY(   90deg );
+              transform: translateZ( -1000px ) rotateY(   90deg );
+    }
+    #box.show-top {
+      -webkit-transform: translateZ( -1000px ) rotateX( -90deg );
+         -moz-transform: translateZ( -1000px ) rotateX(  -90deg );
+           -o-transform: translateZ( -1000px ) rotateX(  -90deg );
+              transform: translateZ( -1000px ) rotateX(  -90deg );
+    }
+    #box.show-bottom {
+      -webkit-transform: translateZ( -1000px ) rotateX( 90deg );
+         -moz-transform: translateZ( -1000px ) rotateX(   90deg );
+           -o-transform: translateZ( -1000px ) rotateX(   90deg );
+              transform: translateZ( -1000px ) rotateX(   90deg );
+    }
+
+
+
+  </style>
+
+</head>
+<body cz-shortcut-listen="true">
+
+  <section class="container">
+    <div id="box" class=" show-back">
+      <section class="front">1</section>
+      <section class="back">2</section>
+      <section class="right">3</section>
+      <section class="left">4</section>
+      <section class="top">5</section>
+      <section class="bottom">6</section>
+    </div>
+  </section>
+
+  <section id="options">
+
+    <p id="show-buttons">
+      <button class="show-front">Show 1</button>
+      <button class="show-back">Show 2</button>
+      <button class="show-right">Show 3</button>
+      <button class="show-left">Show 4</button>
+      <button class="show-top">Show 5</button>
+      <button class="show-bottom">Show 6</button>
+    </p>
+
+    <p>
+      <button id="toggle-backface-visibility">Toggle Backface Visibility</button>
+    </p>
+
+  </section>
+
+  <script src="js/utils.js"></script>
+
+  
+
+<div id="window-resizer-tooltip"><a href="#" title="Edit settings" style="background-image: url(chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/images/icon_19.png);"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth"></span> x <span class="tooltipHeight" id="winHeight"></span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth"></span> x <span class="tooltipHeight" id="vpHeight"></span></div></body></html>
