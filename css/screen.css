@@ -60,7 +60,7 @@ a:link, a:visited { text-decoration: none; }
 ----------------------------------------------- */
 body {
     color: #333;
-    font-family: "museo-slab";
+    font-family: "ff-good-headline-web-pro-con";
     font-size: 100%;
     height: 100%;
     line-height: 1.45;
@@ -77,19 +77,28 @@ body {
 section {
     display: block;
     height: 100vh;
+    overflow: hidden;
     position: relative;
     text-align: center;
-    width: 100vw;
+    width: 100%;
+}
+
+section header {
+    background: #FFF;
+    color: #333;
+    line-height: 0.8;
+    padding: 1em;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    top: 100px;
+    width: 483px;
 }
 
 section article {
-    background: rgba(255,255,255,0.9);
-    padding: 3em;
-    position: absolute;
-    right: 6%;
+    background: rgba(255,255,255,0.99);
+    padding: 30px;
     text-align: left;
-    top: 6%;
-    width: 40%;
 }
 
 section article a {
@@ -101,11 +110,9 @@ section article a:hover {
 }
 
 section p {
-    font-family: "museo-slab";
-    font-size: 1em;
+    font-size: 1.25em;
     font-weight: 300;
     line-height: 1.5;
-    margin-bottom: 1em;
 }
 /*
 h3 {
@@ -119,18 +126,37 @@ h3 {
 }
 */
 
+h3 {
+    font-family: "ff-good-headline-web-pro-con";
+    font-size: 5em;
+    font-weight: 900;
+}
+
+h4 {
+    border-bottom: 10px solid;
+    font-family: "ff-good-headline-web-pro-con";
+    font-size: 5em;
+    font-weight: 400;
+    padding-bottom: 10px;
+}
+
 /* =NAVIGATION
 ----------------------------------------------- */
-header {
+body > header {
     background: #201F1F;
+    height: auto;
     position: fixed;
     text-align: left;
     width: 100%;
     z-index: 1000;
 }
 
+body > header nav {
+    height: 50px;
+}
+
 #navMain ul {
-    height: 40px;
+    height: 100%;
     margin: 0 auto;
     position: relative;
     width: 100%;
@@ -144,10 +170,9 @@ header {
 #navMain ul li a {
     color: #FFF;
     display: block;
-    font-family: 'helvetica';
-    font-size: 1em;
-    font-weight: 700;
-    line-height: 40px;
+    font-size: 2em;
+    font-weight: 500;
+    line-height: 50px;
     padding: 0 20px;
     text-transform: uppercase;
 }
@@ -156,7 +181,7 @@ header {
     background: #FFF;
     content: "";
     display: block;
-    height: 2px;
+    height: 3px;
     margin: 0 auto;
     width: 0%;
     -webkit-transition: all 0.5s;
@@ -164,10 +189,10 @@ header {
 
 #navMain ul li a:hover:after {
     color: #202020;
-    width: 80%;
+    width: 100%;
 }
 
-.active {
+.currentHash {
     background: #FFF;
     color: #202020 !important;
 }
@@ -211,64 +236,85 @@ header {
     transform: rotate(180deg);    
 }
 
-/* =HOME SECTION
+/* =LODGING SECTION
 ----------------------------------------------- */
-#home {
+#lodging {
     background: url(../assets/unaltered/4862548888_9419918d50_o.jpg);
     background-size: cover;
 }
 
-#home article {
+#lodging article {
     padding: 20px 20px 20px calc(180px + 8%);
 }
 
-/* =HOME SECTION
+/* =TRANSPORTATION SECTION
 ----------------------------------------------- */
 #transportation {
-    background: url(../assets/unaltered/horses.jpg);
+    background-image: url(../assets/unaltered/horses.jpg);
     background-size: cover;
 }
-#transportation header {
-    background: #FFF;
-    color: #333;
-    line-height: 0.8;
-    padding: 1em;
+
+#transportation article {
     position: absolute;
-    text-align: left;
-    text-transform: uppercase;
-    top: 100px;
-    width: auto;
-}
-
-#transportation h3 {
-    font-family: "ff-good-headline-web-pro-con";
-    font-size: 5em;
-    font-weight: 900;
-}
-
-#transportation h4 {
-    border-bottom: 10px solid;
-    font-family: "ff-good-headline-web-pro-con";
-    font-size: 5em;
-    font-weight: 400;
-    padding-bottom: 10px;
+    top: 300px;
+    width: 483px;
 }
 
 .modes {
-    width: 50%;
+    top: 100px;
+    height: auto;
+    left: 503px;
+    position: absolute;
 }
 
 .block {
     bottom: 10px;
+    cursor: pointer;
     display: inline-block;
-    float: right;
+    float: left;
     background: #FFF;
-    height: 500px;
-    width: 300px;
+    height: 180px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 30px;
+    text-align: center;
+    width: 180px;
+    -webkit-transition: all 0.5s;
+}
+
+.block:last-child {
+    margin-right: 0;
+}
+
+.block:hover p {
+    opacity: 1;
 }
 
 .block img {
-    width: 10%;
+    height: 100%;
+}
+
+.block p {
+    background: #FFF;
+    left: 0;
+    opacity: 0;
+    padding: 30px;
+    position: absolute;
+    text-align: left;
+    top: 200px;
+    width: auto;
+    -webkit-transition: all 0.5s;
+}
+
+#flights {
+    background: #FFF;
+    color: #000;
+    height: 800px;
+    left: 0;
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    z-index: 1000;
 }
 
 @media only screen
