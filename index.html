@@ -22,6 +22,7 @@
 <!-- Other scripts -->
     <script type="text/javascript" src="js/smoothscroll.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/rotate.js"></script>
     <script type="text/javascript" src="js/jquery.color.js"></script>
 </head> 
@@ -69,6 +70,11 @@
         </section><!-- /vistas -->
     
         <section id="lodging">
+            
+            <header>            
+                <h3>Lodging</h3>
+                <h4>gestur hús</h4>
+            </header>
                                 
             <article>
                 
@@ -86,30 +92,27 @@
             </header>
             
             <article>
-                <p>Getting around in Iceland is easy but travelers should always take precaution. The car is the most common mode of transport and car rental agencies are to be found in most major towns. Beware that Iceland beautiful and rugged landscape also contains some difficulties and dangers for the driver. One should therefore always drive carefully and monitor the weather forecast, especially during winter.</p>
-
-<p>The domestic airlines provide daily flights between Reykjavík and most major destinations.</p>
-
-<p>Iceland has no railways but bus companies cover the country with their network. There are also a number of ferry services connecting ports.</p>
-
-<p>Increasing number of visitors are using cycling as a means of transport but observe that Iceland nature and weather can be challenging.</p>
-                                        
+                <p>Getting around in Iceland is easy but travelers should always take precaution. The car is the most common mode of transport and car rental agencies are to be found in most major towns. Beware that Iceland beautiful and rugged landscape also contains some difficulties and dangers for the driver. One should therefore always drive carefully and monitor the weather forecast, especially during winter.</p>                            
             </article>
             
-            <article class="modes">
-                <div class="block">
-                    Flight
+            <div class="modes">
+                <a href="flights.html" class="block">
                     <img src="airplane.svg" />
-                </div>
-                <div class="block">
-                    Bus
+                    <p>The domestic airlines provide daily flights between Reykjavík and most major destinations.</p>
+                    <div id="flights">
+                        <div id="content">
+                        </div>
+                    </div>
+                </a>
+                <a class="block">
                     <img src="bus.svg" />
-                </div>
-                <div class="block">
-                    Cycling
+                    <p>Iceland has no railways but bus companies cover the country with their network. There are also a number of ferry services connecting ports.</p>
+                </a>
+                <a class="block">
                     <img src="bicycle.svg" />
-                </div>
-            </article>
+                    <p>Increasing number of visitors are using cycling as a means of transport but observe that Iceland nature and weather can be challenging.</p>
+                </a>
+            </div>
                 
         </section><!-- /transportation -->
                     
