@@ -1,16 +1,16 @@
 (function($) {
     $.fn.SmoothAnchors = function() {
-        
+
         function scrollBodyTo(destination, hash) {
 
             // Change the hash first, then do the scrolling. This retains the standard functionality of the back/forward buttons.
-            var scrollmem = $(document).scrollLeft();
+            var scrollmem = $(document).scrollTop();
             window.location.hash = hash;
-            $(document).scrollLeft(scrollmem);
+            $(document).scrollTop(scrollmem);
             $("html,body").animate({
-                scrollLeft: destination
-            }, 1200);
-            
+                scrollTop: destination
+            }, 400);
+
         }
 
         if (typeof $().on == "function") {
@@ -26,26 +26,15 @@
                         scrollBodyTo(0, href);
                     }
                     else if ($(nameSelector).length != 0) {
-                        scrollBodyTo($(nameSelector).offset().left, href);
+                        scrollBodyTo($(nameSelector).offset().top, href);
                     }
                     else {
                         // fine, we'll just follow the original link. gosh.
                         window.location = href;
-                        articleAnimate()
                     }
                 }
                 else {
-                    scrollBodyTo($(href).offset().left, href);
-                    if (href == '#about') {
-                        $(href + ' article').delay(600).animate({
-                            opacity: 1
-                        }, 1000)
-                    } else if (href == '#precautions') {
-                        $(href + ' article').delay(600).animate({
-                            right: '4%'
-                        }, 1000)
-                    } else {}
-                    console.log(href);
+                    scrollBodyTo($(href).offset().top, href);
                 }
                 return false;
             });
@@ -60,19 +49,17 @@
 
                     if (href == "#") {
                         scrollBodyTo(0, href);
-                        articleAnimate()
                     }
                     else if ($(nameSelector).length != 0) {
-                        scrollBodyTo($(nameSelector).offset().left, href);
-                        articleAnimate()
+                        scrollBodyTo($(nameSelector).offset().top, href);
                     }
                     else {
                         // fine, we'll just follow the original link. gosh.
                         window.location = href;
                     }
-                } else {
-                    scrollBodyTo($(href).offset().left, href);
-                    articleAnimate()
+                }
+                else {
+                    scrollBodyTo($(href).offset().top, href);
                 }
                 return false;
             });
@@ -81,5 +68,5 @@
 })(jQuery);
 
 $(document).ready(function() {
-    $().SmoothAnchors();
+        $().SmoothAnchors();
 });
