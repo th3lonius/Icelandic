@@ -87,12 +87,12 @@ section header {
     background: #FFF;
     color: #333;
     line-height: 0.8;
-    padding: 1em;
+    padding: 30px;
     position: absolute;
     text-align: left;
     text-transform: uppercase;
     top: 100px;
-    width: 483px;
+    z-index: 999;
 }
 
 section article {
@@ -110,6 +110,7 @@ section article a:hover {
 }
 
 section p {
+    color: #333;
     font-size: 1.25em;
     font-weight: 300;
     line-height: 1.5;
@@ -140,6 +141,21 @@ h4 {
     padding-bottom: 10px;
 }
 
+h5 {
+    border-bottom: 5px solid;
+    font-size: 3em;
+    font-style: italic;
+    line-height: 1;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h5::before {
+   content: "//";
+}
+
 /* =NAVIGATION
 ----------------------------------------------- */
 body > header {
@@ -161,7 +177,7 @@ body > header nav {
     position: relative;
     width: 100%;
 }
- 
+
 #navMain ul li {
     float: left;
     height: 100%;
@@ -173,7 +189,7 @@ body > header nav {
     font-size: 2em;
     font-weight: 500;
     line-height: 50px;
-    padding: 0 20px;
+    padding: 0 30px;
     text-transform: uppercase;
 }
 
@@ -188,52 +204,23 @@ body > header nav {
 }
 
 #navMain ul li a:hover:after {
-    color: #202020;
     width: 100%;
 }
 
-.currentHash {
+.currentHash a:after {
     background: #FFF;
-    color: #202020 !important;
-}
-
-#branding {
+    content: "";
+    display: block;
+    height: 3px;
     margin: 0 auto;
-    position: relative;
-    text-align: center;
+    width: 100%;
 }
 
-.prev, .next {
-    cursor: pointer;
-    display: none;
-    font-size: 10em;
-    height: 100%;
-    position: fixed;
-    text-align: center;
-    width: 4%;
-    z-index: 10000;
-    -webkit-transition: all linear 0.5s;
-}
-
-.prev {
-    opacity: 0;
-    left: 0;
-}
-
-.next { right: 0; }
-
-.prev:hover img, .next:hover img { opacity: 1; }
-
-.prev img, .next img {
-    margin-top: calc(100%);
-    opacity: 0.5;
-    width: 70%;
-}
-
-.prev img {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    transform: rotate(180deg);    
+/* =LODGING SECTION
+----------------------------------------------- */
+#home {
+    background: url(../assets/unaltered/6133927871_616d9f6bae_o.jpg);
+    background-size: cover;
 }
 
 /* =LODGING SECTION
@@ -252,38 +239,67 @@ body > header nav {
 #transportation {
     background-image: url(../assets/unaltered/horses.jpg);
     background-size: cover;
+    background-attachment: fixed;
+}
+
+.bottomArrow {
+    bottom: -30px;
+	width: 0;
+	height: 0;
+    left: 0;
+	border-top: 30px solid rgba(51,51,51,0.7);
+	border-left: 30px solid transparent;
+    position: absolute;
 }
 
 #transportation article {
+    background: rgba(186,218,85,0.99);
+    height: 520px;
+    left: 30px;
     position: absolute;
-    top: 300px;
-    width: 483px;
+    top: 70px;
+    width: 443px;
+}
+
+#transportation article p {
+    bottom: 30px;
+    color: #FFF;
+    font-weight: 500;
+    left: 30px;
+    right: 30px;
+    position: absolute;
 }
 
 .modes {
     top: 100px;
     height: auto;
-    left: 503px;
+    left: 541px;
     position: absolute;
 }
 
 .block {
+    border: 4px solid #BADA55;
+    border-radius: 500px;
     bottom: 10px;
     cursor: pointer;
     display: inline-block;
     float: left;
     background: #FFF;
-    height: 180px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    padding: 30px;
+    height: 160px;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    padding: 40px;
     text-align: center;
-    width: 180px;
+    width: 160px;
     -webkit-transition: all 0.5s;
 }
 
 .block:last-child {
     margin-right: 0;
+}
+
+.block:hover {
+    -webkit-transform: scale(0.9);
 }
 
 .block:hover p {
@@ -294,27 +310,39 @@ body > header nav {
     height: 100%;
 }
 
-.block p {
+.block > p {
     background: #FFF;
+    border-radius: 50px;
     left: 0;
     opacity: 0;
     padding: 30px;
     position: absolute;
     text-align: left;
-    top: 200px;
+    top: 230px;
     width: auto;
     -webkit-transition: all 0.5s;
 }
 
-#flights {
+.modes div {
     background: #FFF;
     color: #000;
-    height: 800px;
     left: 0;
+    opacity: 0.0;
+    padding: 30px;
     position: absolute;
-    top: 200px;
+    text-align: left;
+    top: 230px;
     width: 100%;
     z-index: 1000;
+    -webkit-transition: all 0.5s;
+}
+
+.active {
+    opacity: 1!important;
+}
+
+#flights p {
+    margin-bottom: 1em;
 }
 
 @media only screen

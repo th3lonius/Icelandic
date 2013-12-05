@@ -1,7 +1,5 @@
 $(document).ready(function() {
     
-    $('#splashType').bigtext()
-    
 /*----- NAVIGATION -----*/
     
  if (!location.hash) {
@@ -84,11 +82,10 @@ $(document).ready(function() {
     
 /*----- ANIMATIONS -----*/    
     
-    $('.block').click(function() {
-        $(this).children('p').animate({
-            opacity: 0.99
-        }, 800);
-        
+    $('.modes a').click(function() {
+        $('.modes a div').removeClass('active');
+        $(this).children("div").addClass('active');
+        return false;
     });
     
 
