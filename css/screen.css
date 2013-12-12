@@ -95,7 +95,7 @@ section header {
     z-index: 999;
 }
 
-section article {
+sectio article {
     background: rgba(255,255,255,0.99);
     padding: 30px;
     text-align: left;
@@ -114,6 +114,7 @@ section p {
     font-size: 1.25em;
     font-weight: 300;
     line-height: 1.5;
+    margin-bottom: 1em;
 }
 /*
 h3 {
@@ -143,17 +144,19 @@ h4 {
 
 h5 {
     border-bottom: 5px solid;
+    display: block;
     font-size: 3em;
     font-style: italic;
     line-height: 1;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     text-align: left;
     text-transform: uppercase;
+    width: 100%;
 }
 
 h5::before {
-   content: "//";
+   content: "";
 }
 
 /* =NAVIGATION
@@ -216,12 +219,85 @@ body > header nav {
     width: 100%;
 }
 
-/* =LODGING SECTION
+/* =HOME SECTION
 ----------------------------------------------- */
 #home {
     background: url(../assets/unaltered/6133927871_616d9f6bae_o.jpg);
     background-size: cover;
 }
+
+/* =SIGHTS SECTION
+----------------------------------------------- */
+#sights {
+    background: url(../assets/unaltered/phallus.jpg);
+    border-bottom: 30px solid #FFF;
+}
+
+#sights article {
+    -webkit-column-count: 3;
+    -webkit-column-gap: 30px;
+    bottom: -250px;
+    position: absolute;
+}
+
+.article-fade {
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.1), rgba(255,255,255,0.99)); 
+    bottom: 0;
+    height: 60px;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+}
+
+#sights article p {
+
+}
+
+.info-toggle {
+    background: #333333;
+    color: #FFF;
+    display: block;
+    height: 40px;
+    position: absolute;
+    top: -40px;
+    width: 40px;
+}
+
+.info-toggle::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 7px;
+    right: 18px;
+    width: 4px;
+    height: 26px;
+    background: #BADA55;
+}
+
+.info-toggle::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 7px;
+    width: 26px;
+    height: 4px;
+    background: #BADA55;
+}
+
+/* =VISTAS SECTION
+----------------------------------------------- */
+#vistas {
+    background: url(../assets/unaltered/strandirweb2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#vistas article {
+    bottom: 0;
+    position: absolute;
+}
+
 
 /* =LODGING SECTION
 ----------------------------------------------- */
