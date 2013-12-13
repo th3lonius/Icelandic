@@ -95,9 +95,9 @@ section header {
     z-index: 999;
 }
 
-sectio article {
+section article {
     background: rgba(255,255,255,0.99);
-    padding: 30px;
+    padding: 40px;
     text-align: left;
 }
 
@@ -144,7 +144,7 @@ h4 {
 
 h5 {
     border-bottom: 5px solid;
-    display: block;
+    display: inline-block;
     font-size: 3em;
     font-style: italic;
     line-height: 1;
@@ -228,16 +228,18 @@ body > header nav {
 
 /* =SIGHTS SECTION
 ----------------------------------------------- */
-#sights {
-    background: url(../assets/unaltered/phallus.jpg);
-    border-bottom: 30px solid #FFF;
+#sights article {
+    bottom: -50%;
+    position: absolute;
 }
 
-#sights article {
-    -webkit-column-count: 3;
-    -webkit-column-gap: 30px;
-    bottom: -250px;
-    position: absolute;
+.article-container {
+    margin: 0 auto;
+    width: 70%;
+}
+
+#sights article p {
+    font-size: 1.4em;
 }
 
 .article-fade {
@@ -249,18 +251,24 @@ body > header nav {
     z-index: 9999;
 }
 
-#sights article p {
-
+.info-toggle-background {
+    background: #FFF;
+    right: 11.5%;
+    position: absolute;
+    top: -40px;
 }
 
 .info-toggle {
-    background: #333333;
-    color: #FFF;
     display: block;
     height: 40px;
-    position: absolute;
-    top: -40px;
     width: 40px;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+}
+
+.spin {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);        
 }
 
 .info-toggle::before {

@@ -25,7 +25,7 @@ Superslides = function(el, options) {
   }, options);
 
   var that       = this,
-      $control   = $('<section>', { "class": 'slides-control' }),
+      $control   = $('<ul>', { "class": 'slides-control' }),
       multiplier = 1;
 
   this.$el        = $(el);

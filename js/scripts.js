@@ -1,5 +1,8 @@
 $(document).ready(function() {
     
+    
+    $('#slides').superslides();
+    
 /*----- NAVIGATION -----*/
     
  if (!location.hash) {
@@ -57,25 +60,22 @@ $(document).ready(function() {
     });
     
 /*RIGHT ANIMATIONS*/   
-    $("body").on('click', '.info-toggle', function(event) {
+    $("body").on('click', 'article, .info-toggle', function(event) {
         $('#sights article').animate({
             bottom: 0,
-            backgroundColor: 'rgba(255,255,255,0.8)'
+            backgroundColor: 'rgba(255,255,255,0.9)'
         },200),
-        $('#main').animate({right: 300}),
-        $('#main-menu, #right-tog, .bkgd-desc').fadeOut(300);
+        $('.info-toggle').addClass('spin');
     }); 
     
     $("body").on('click', 'section, .info-toggle', function(event) {    
         var divpos = parseInt($('#sights article').css('bottom'));
-        
         if (divpos == 0) {
             $('#sights article').animate({
-                bottom: -250,
+                bottom: '-50%',
                 backgroundColor: 'rgba(255,255,255,0.99)'
             },300),
-            $('#main').animate({right: 0}),
-            $('#main-menu, #right-tog, .bkgd-desc').fadeIn(300);
+            $('.info-toggle').removeClass('spin');
         };
     });
     
